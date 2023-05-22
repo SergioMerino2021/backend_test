@@ -1,0 +1,471 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel + Vue ",
+        "version": "0.2"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/client/getAllClients": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Obtener todos los clientes",
+                "operationId": "3a9a3e60184f1436ead1ee3d083a5313",
+                "responses": {
+                    "200": {
+                        "description": "Listado de clientes"
+                    }
+                }
+            }
+        },
+        "/client/getOneClient/{id}": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Obtener un cliente por ID",
+                "operationId": "86ba166ce94b468cf8cb51fb6ca9b2fc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Informción de un cliente"
+                    }
+                }
+            }
+        },
+        "/client/newClient": {
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Crear un nuevo cliente",
+                "operationId": "1fa89c4bb567897a7069774d65ed189c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "cognoms": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "telefon": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cliente creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "nom": {
+                                            "type": "string"
+                                        },
+                                        "cognoms": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "telefon": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al crear el cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/client/updateClient": {
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Actualizar un cliente",
+                "operationId": "8f681d045c8757c4026221768aa9d490",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "cognoms": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "telefon": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cliente actualizado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "nom": {
+                                            "type": "string"
+                                        },
+                                        "cognoms": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "telefon": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al actualizar el cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/newProduct": {
+            "post": {
+                "tags": [
+                    "Producte"
+                ],
+                "summary": "Crear un nuevo producto",
+                "operationId": "b1b0309de8b7129e9a047cee6e017379",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "descripcion": {
+                                        "type": "string"
+                                    },
+                                    "codigo_producto": {
+                                        "type": "string"
+                                    },
+                                    "activo": {
+                                        "type": "boolean"
+                                    },
+                                    "tipo_producto": {
+                                        "type": "string",
+                                        "enum": [
+                                            "pc_sobremesa",
+                                            "portatil"
+                                        ]
+                                    },
+                                    "gaming": {
+                                        "type": "boolean",
+                                        "nullable": true
+                                    },
+                                    "potencia_fuente": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "capacidad_bateria": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "amperaje_cargador": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Producto creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "descripcion": {
+                                            "type": "string"
+                                        },
+                                        "codigo_producto": {
+                                            "type": "string"
+                                        },
+                                        "activo": {
+                                            "type": "boolean"
+                                        },
+                                        "fecha_entrada": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "tipo_producto": {
+                                            "type": "string",
+                                            "enum": [
+                                                "pc_sobremesa",
+                                                "portatil"
+                                            ]
+                                        },
+                                        "gaming": {
+                                            "type": "boolean",
+                                            "nullable": true
+                                        },
+                                        "potencia_fuente": {
+                                            "type": "integer",
+                                            "nullable": true
+                                        },
+                                        "capacidad_bateria": {
+                                            "type": "integer",
+                                            "nullable": true
+                                        },
+                                        "amperaje_cargador": {
+                                            "type": "integer",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al crear el cliente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/getAllProducts": {
+            "get": {
+                "tags": [
+                    "Producte"
+                ],
+                "summary": "Obtener todos los productos",
+                "operationId": "d2c847863dbe69d475471f14c53f5204",
+                "responses": {
+                    "200": {
+                        "description": "Listado de productos"
+                    }
+                }
+            }
+        },
+        "/product/getOneProduct/{id}": {
+            "get": {
+                "tags": [
+                    "Producte"
+                ],
+                "summary": "Obtener un producto por ID",
+                "operationId": "7bf211efb8f163192d84582bb8f821e1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Informción de un producto"
+                    }
+                }
+            }
+        },
+        "/product/updateProduct": {
+            "put": {
+                "tags": [
+                    "Producte"
+                ],
+                "summary": "Actualizar un producto",
+                "operationId": "c962d3ef586d8de3176d867a297a4ebd",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "descripcion": {
+                                        "type": "string"
+                                    },
+                                    "codigo_producto": {
+                                        "type": "string"
+                                    },
+                                    "activo": {
+                                        "type": "boolean"
+                                    },
+                                    "fecha_entrada": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "tipo_producto": {
+                                        "type": "string",
+                                        "enum": [
+                                            "pc_sobremesa",
+                                            "portatil"
+                                        ]
+                                    },
+                                    "gaming": {
+                                        "type": "boolean",
+                                        "nullable": true
+                                    },
+                                    "potencia_fuente": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "capacidad_bateria": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "amperaje_cargador": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Producto actualizado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "nom": {
+                                            "type": "string"
+                                        },
+                                        "cognoms": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "telefon": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error al actualizar el producto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
